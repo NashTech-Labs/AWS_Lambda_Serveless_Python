@@ -1,0 +1,17 @@
+service: aws-knoldus-project
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  stage: dev
+  runtime: python3.9
+  region: ap-south-1
+
+functions:
+  check_connection:
+    handler: app.check
+    events:
+      - httpApi:
+         path: /data
+         method: get
